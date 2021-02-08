@@ -12,49 +12,43 @@ namespace opn
         public static bool _flipACoinResult = new Random().NextDouble() >= 0.5;
         static void Main(string[] args)
         {
-            var dragon = new Dragon("Smak", 1000, 55, 20, _flipACoinResult);
-            var hero = new Hero("Hero", 2000, 55, 20, !_flipACoinResult);
+            var sword = new Sword("sword", 2.5, 5);
+            var shield = new Shield("shield", 3, 5);
+
+            var entities = new List<EntityBase>()
+            {
+                new Dragon("Smak", 1000, 55, 20, _flipACoinResult),
+                new Hero("Hero", 2000, 55, 20, !_flipACoinResult, sword, shield)
+            };
             int i = 1;
 
             Console.WriteLine("Fight started");
 
-            while(dragon.Health > 0 || hero.Health > 0)
+            while(entities.FirstOrDefault(x => x.Health <= 0) == null)
             {
                 Console.WriteLine($"\n Round: {i} \n");
 
-                double attack = dragon.OnTurn ? dragon.Attack() : hero.Attack();
-                double defense = !dragon.OnTurn ? dragon.Defense() : hero.Defense();
+                var attackingEntity = entities.FirstOrDefault(x => x.OnTurn);
+                var defendingEntity = entities.FirstOrDefault(x => !x.OnTurn);
+                double attack = attackingEntity is Hero h ? h.Attack() : attackingEntity.Attack();
+                double defense = defendingEntity is Hero hh ? hh.Defense() : defendingEntity.Defense();
                 double result = (attack - defense) > 0 ? attack - defense : 0;
 
-                if (hero.OnTurn)
+                defendingEntity.Health -= result;
+                Console.WriteLine($"{attackingEntity.Name} dealt {result} damage to {defendingEntity.Name}!");
+                Console.WriteLine($"{defendingEntity.Name} HP: {defendingEntity.Health}");
+                if (defendingEntity.Health <= 0)
                 {
-                    dragon.Health -= result;
-                    Console.WriteLine($"Hero dealt {result} damage to dragon.");
-                    Console.WriteLine($"Dragon HP: {dragon.Health}");
-                    if(dragon.Health <= 0 )
-                    {
-                        Console.WriteLine("Dragon died");
-                        break;
-                    }
-                }
-                else
-                {
-                    hero.Health -= result;
-                    Console.WriteLine($"Dragon dealt {result} damage to hero.");
-                    Console.WriteLine($"Hero HP: {hero.Health}");
-                    if (hero.Health <= 0 )
-                    {
-                        Console.WriteLine("Hero died");
-                        break;
-                    }
+                    Console.WriteLine($"\n {defendingEntity.Name} has died! \n");
+                    break;
                 }
 
-                hero.OnTurn = !hero.OnTurn;
-                dragon.OnTurn = !dragon.OnTurn;
+                attackingEntity.OnTurn = !attackingEntity.OnTurn;
+                defendingEntity.OnTurn = !defendingEntity.OnTurn;
                 i++;
             }
 
-            Console.WriteLine("Fight ended");
+            Console.WriteLine("\n Fight ended \n");
         }
     }
 }

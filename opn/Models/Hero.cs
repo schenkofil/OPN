@@ -6,31 +6,24 @@ using System.Threading.Tasks;
 
 namespace opn.Models
 {
-    class Hero
+    class Hero : EntityBase
     {
-        public string Name { get; set; }
-        public double Health { get; set; }
-        public double Power { get; set; }
-        public double Armor { get; set; }
-        public bool OnTurn { get; set; }
-
-        public Hero(string name, double health, double power, double armor, bool onTurn)
+        public Sword Sword { get; set; }
+        public Shield Shield { get; set; }
+        public Hero(string name, double health, double power, double armor, bool onTurn, Sword sword, Shield shield) : base(name, health, power, armor, onTurn)
         {
-            Name = name;
-            Health = health;
-            Power = power;
-            Armor = armor;
-            OnTurn = onTurn;
+            Sword = sword;
+            Shield = shield;
         }
 
         public double Attack()
         {
-            return Power * new Random().NextDouble();
+            return Power * new Random().NextDouble() + Sword.Damage;
         }
 
         public double Defense()
         {
-            return Armor * new Random().NextDouble();
+            return Armor * new Random().NextDouble() + Shield.Defense;
         }
     }
 

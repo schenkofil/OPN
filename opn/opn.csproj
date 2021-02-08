@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Dragon.cs" />
+    <Compile Include="Models\EntityBase.cs" />
+    <Compile Include="Models\Equip.cs" />
     <Compile Include="Models\Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

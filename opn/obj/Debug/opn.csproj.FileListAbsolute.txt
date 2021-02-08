@@ -5,3 +5,10 @@ C:\Projects\school\6-semestr\OPN\cv-1(master)\opn\obj\Debug\opn.csprojAssemblyRe
 C:\Projects\school\6-semestr\OPN\cv-1(master)\opn\obj\Debug\opn.csproj.CoreCompileInputs.cache
 C:\Projects\school\6-semestr\OPN\cv-1(master)\opn\obj\Debug\opn.exe
 C:\Projects\school\6-semestr\OPN\cv-1(master)\opn\obj\Debug\opn.pdb
+C:\Projects\school\6-semestr\OPN\cv-2\opn\bin\Debug\opn.exe.config
+C:\Projects\school\6-semestr\OPN\cv-2\opn\bin\Debug\opn.exe
+C:\Projects\school\6-semestr\OPN\cv-2\opn\bin\Debug\opn.pdb
+C:\Projects\school\6-semestr\OPN\cv-2\opn\obj\Debug\opn.csprojAssemblyReference.cache
+C:\Projects\school\6-semestr\OPN\cv-2\opn\obj\Debug\opn.csproj.CoreCompileInputs.cache
+C:\Projects\school\6-semestr\OPN\cv-2\opn\obj\Debug\opn.exe
+C:\Projects\school\6-semestr\OPN\cv-2\opn\obj\Debug\opn.pdb
